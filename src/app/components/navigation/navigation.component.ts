@@ -19,9 +19,16 @@ import { CommonModule } from '@angular/common';
 export class NavigationComponent implements AfterViewInit {
   @ViewChild('moreOptions') moreOptions!: ElementRef;
 
-  lastSelectedDropdown: any;
+  moreOptionsTarget: any;
   dropdownVisible: boolean = false;
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+    this.moreOptionsTarget = document.querySelector('[moreoptions]');
+    this.setDropdownPosition(this.moreOptionsTarget);
+    const follower = document.getElementById(this.moreOptions.nativeElement.getAttribute('follower-id'));
+    if (follower) {
+      follower.style.display = 'none';
+    }
+  }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
@@ -55,8 +62,7 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   showMoreOptions(target: HTMLElement) {
-    if (!this.dropdownVisible || this.lastSelectedDropdown !== target) {
-      this.lastSelectedDropdown = target;
+    if (!this.dropdownVisible) {
       this.setDropdownPosition(target);
       this.toggleDropdown(true);
     }
@@ -70,7 +76,14 @@ export class NavigationComponent implements AfterViewInit {
     if (this.dropdownVisible !== visible) {
       this.dropdownVisible = visible;
       this.moreOptions.nativeElement.style.opacity = visible ? '1' : '0';
+      this.moreOptions.nativeElement.style.pointerEvents = visible  ? 'auto' : 'none';
       this.moreOptions.nativeElement.classList.toggle('hidden', !visible);
+      const follower = document.getElementById(
+        this.moreOptions.nativeElement.getAttribute('follower-id')
+      );
+      if (follower) {
+        follower.style.display = visible ? 'block' : 'none';
+      }
     }
   }
 

@@ -22,7 +22,7 @@ export class CursorFollowDirective implements OnDestroy {
   }
   ngOnInit() {
     const id = this.randomId();
-    this.el.nativeElement.setAttribute('follow-id', id);
+    this.el.nativeElement.setAttribute('follower-id', id);
     this.followerElement = this.renderer.createElement('div');
     this.renderer.addClass(this.followerElement, 'cursor-follow');
     this.renderer.setStyle(this.followerElement, 'position', 'absolute');
@@ -34,7 +34,7 @@ export class CursorFollowDirective implements OnDestroy {
       `${this.size * 0.7}px`
     );
 
-    this.followerElement.setAttribute('follow-target', id);
+    this.followerElement.setAttribute('id', id);
 
     this.setFollowerSize();
     this.renderer.appendChild(document.body, this.followerElement);
@@ -44,7 +44,7 @@ export class CursorFollowDirective implements OnDestroy {
     const parentRect = this.el.nativeElement.getBoundingClientRect();
     const parentWidth = parentRect.width;
 
-    const followerSize = parentWidth < 50 ? parentWidth * 0.2 : this.size;
+    const followerSize = parentWidth < 50 ? parentWidth * 0.5 : this.size;
     this.renderer.setStyle(this.followerElement, 'width', `${followerSize}px`);
     this.renderer.setStyle(
       this.followerElement,
@@ -97,11 +97,11 @@ export class CursorFollowDirective implements OnDestroy {
       } else if (desiredY + followerHeight / 2 > rect.bottom) {
         constrainedY = rect.bottom - followerHeight / 2;
       }
-      this.renderer.setStyle(this.followerElement, 'opacity', '1');
+       this.renderer.setStyle(this.followerElement, 'opacity', '1');
       this.renderer.setStyle(this.followerElement, 'left', `${constrainedX}px`);
       this.renderer.setStyle(this.followerElement, 'top', `${constrainedY}px`);
     } else {
-      this.renderer.setStyle(this.followerElement, 'opacity', '0');
+       this.renderer.setStyle(this.followerElement, 'opacity', '0');
     }
   }
 

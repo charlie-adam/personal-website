@@ -18,7 +18,7 @@
         position: relative;
         .option{
             color: $dimwhite;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             will-change: transform;
             text-decoration: none;
             font-size: 0.8rem;
@@ -60,6 +60,7 @@
 }
 
 .more-options{
+    pointer-events: none;
     position:absolute;
     opacity: 0;
     flex-direction: column;
@@ -99,7 +100,7 @@
             color: $dimwhite;
             border-radius: 5px;
             i{
-                transition: color 0.5s ease;
+                transition: color 0.3s ease;
                 font-size: 0.9rem;
             }
         }
@@ -112,12 +113,12 @@
                 font-size: 0.85rem;
                 color: $dimwhite;
                 font-weight: 500;
-                transition: color 0.5s ease;
+                transition: color 0.3s ease;
 
             }
             .description{
                 font-size: 0.75rem;
-                transition: color 0.5s ease;
+                transition: color 0.3s ease;
                 color: $subtext;
             }
         }
