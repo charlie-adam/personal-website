@@ -4,21 +4,24 @@ import {
   ElementRef,
   AfterViewInit,
   HostListener,
+  Renderer2,
 } from '@angular/core';
 import { CursorFollowDirective } from '../../directives/cursor-follow.directive';
 import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TooltipDirective } from '../../directives/tooltip.directive';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [CursorFollowDirective, RouterModule, CommonModule],
+  imports: [CursorFollowDirective, RouterModule, CommonModule, TooltipDirective],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent implements AfterViewInit {
   @ViewChild('moreOptions') moreOptions!: ElementRef;
-
+  discord: string = 'damn7337';
+  gmail: string = 'cabusiness@gmail.com';
   moreOptionsTarget: any;
   dropdownVisible: boolean = false;
   ngAfterViewInit() {
@@ -29,6 +32,8 @@ export class NavigationComponent implements AfterViewInit {
       follower.style.display = 'none';
     }
   }
+
+  constructor(private renderer: Renderer2) {}
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
@@ -85,6 +90,32 @@ export class NavigationComponent implements AfterViewInit {
         follower.style.display = visible ? 'block' : 'none';
       }
     }
+  }
+
+  openLink(link: string) {
+    window.open(link, '_blank');
+  }
+
+  copy(text: string, e?: MouseEvent) {
+    navigator.clipboard.writeText(text);
+    // const tooltip = document.querySelector('.tooltip') as HTMLElement;
+    // if (tooltip && e) {
+    //   if (tooltip.textContent === 'Copied!') return;
+    //   const originalText = tooltip.textContent;
+    //   tooltip.textContent = 'Copied!';
+    //   const el = e.target as HTMLElement;
+    //   const hostPos = el.getBoundingClientRect();
+    //   const tooltipPos = tooltip.getBoundingClientRect();
+
+    //   const top = hostPos.top + tooltipPos.height + 10;
+    //   const left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
+
+    //   this.renderer.setStyle(tooltip, 'top', `${top}px`);
+    //   this.renderer.setStyle(tooltip, 'left', `${left}px`);
+    //   setTimeout(() => {
+    //     tooltip.textContent = originalText;
+    //   }, 1000);
+    // }
   }
 
   setDropdownPosition(target: HTMLElement) {

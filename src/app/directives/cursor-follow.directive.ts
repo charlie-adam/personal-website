@@ -97,9 +97,11 @@ export class CursorFollowDirective implements OnDestroy {
       } else if (desiredY + followerHeight / 2 > rect.bottom) {
         constrainedY = rect.bottom - followerHeight / 2;
       }
-       this.renderer.setStyle(this.followerElement, 'opacity', '1');
       this.renderer.setStyle(this.followerElement, 'left', `${constrainedX}px`);
       this.renderer.setStyle(this.followerElement, 'top', `${constrainedY}px`);
+      setTimeout(() => {
+        this.renderer.setStyle(this.followerElement, 'opacity', '1');
+      }, 100);
     } else {
        this.renderer.setStyle(this.followerElement, 'opacity', '0');
     }

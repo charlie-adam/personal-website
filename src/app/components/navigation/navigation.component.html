@@ -2,13 +2,21 @@
     <div class="section left" appCursorFollow>
         <p>CA</p>
     </div>
-    <div class="section right" appCursorFollow>
-        <a class="option" [routerLink]="'/home'" routerLinkActive="active-link">HOME</a>
-        <a class="option" [routerLink]="'/about'" routerLinkActive="active-link">ABOUT</a>
-        <a class="option" [routerLink]="'/projects'" routerLinkActive="active-link" moreoptions>PROJECTS</a>
-        <a class="option" [routerLink]="'/contact'" routerLinkActive="active-link">CONTACT</a>
-    </div>
+    <div class="nav-n-links">
+        <div class="section right" appCursorFollow>
+            <a class="option" [routerLink]="'/home'" routerLinkActive="active-link">HOME</a>
+            <a class="option" [routerLink]="'/about'" routerLinkActive="active-link">ABOUT</a>
+            <a class="option" [routerLink]="'/projects'" routerLinkActive="active-link" moreoptions>PROJECTS</a>
+            <a class="option" [routerLink]="'/contact'" routerLinkActive="active-link">CONTACT</a>
+        </div>
 
+        <div class="section links" appCursorFollow>
+            <i class="bi bi-discord" [appTooltip]="discord" (click)="copy(discord, $event)"></i>
+            <i class="bi bi-linkedin" (click)="openLink('https://www.linkedin.com/in/charlie-adam-6552a927a/')"></i>
+            <i class="bi bi-github" (click)="openLink('https://github.com/charlie-adam')"></i>
+            <i class="bi bi-envelope-fill" [appTooltip]="gmail" (click)="copy(gmail, $event)"></i>
+        </div>
+    </div>
 </div>
 
 <div class="section more-options" #moreOptions appCursorFollow>
@@ -29,9 +37,21 @@
             <i class="bi bi-music-note-list"></i>
         </div>
         <div class="info">
-            <p class="title">Scanplr</p>
+            <p class="title">Scanpler</p>
             <p class="description">
                 A web application allowing users to scan their playlists for samples and explore their music.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="option" routerLink="/projects" fragment="dusk">
+        <div class="icon">
+            <i class="bi bi-moon"></i>
+        </div>
+        <div class="info">
+            <p class="title">Dusk</p>
+            <p class="description">
+                A game modification for Minecraft with 100,000+ downloads 1,000,000+ Youtube impressions.
             </p>
         </div>
     </div>
