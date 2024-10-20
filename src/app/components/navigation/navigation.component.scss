@@ -44,8 +44,8 @@
     z-index: 2;
     backdrop-filter: blur(40px);
     user-select: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
+    -webkit-user-select: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 0 5px rgba(242, 242, 242, 0.01);}
 
 .active-link{
     color: $white !important;
@@ -69,6 +69,8 @@
     gap:10px;
     align-items: center;
     z-index: 10;
+    -webkit-user-select: none;
+    user-select: none;
     .option{
         width: 100%;
         display:flex;
@@ -82,10 +84,13 @@
                 }
             }
             .info{
+                user-select: none;
                 .title{
+                    user-select: none;
                     color: $white;
                 }
                 .description{
+                    user-select: none;
                     color: $dimwhite;
                 }
             }
