@@ -12,8 +12,11 @@ import { CommonModule } from '@angular/common';
 })
 export class NavigationComponent implements AfterViewInit {
   @ViewChild('follower', { static: true }) followerRef!: ElementRef;
+  @ViewChild('follower2', { static: true }) followerRef2!: ElementRef;
   follower!: HTMLElement;
+  follower2!: HTMLElement;
   ngAfterViewInit() {
     this.follower = this.followerRef.nativeElement;
+    this.follower2 = this.followerRef2.nativeElement;
   }
 }

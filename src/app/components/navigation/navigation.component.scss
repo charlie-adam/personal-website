@@ -6,12 +6,11 @@
     align-items: center;
     margin:10px;
     .left{
-        height: 45px;
+        height: 36px;
         p{
             user-select: none;
             cursor: default;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.2rem;
         }
     }
     .right{
@@ -47,4 +46,8 @@
 
 .active-link{
     color: $white !important;
+}
+
+.small{
+    width: 20px;
 }
