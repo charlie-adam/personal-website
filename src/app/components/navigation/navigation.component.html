@@ -1,0 +1,13 @@
+<div class="nav-wrapper" id="nav">
+    <div class="section left">
+      <p>CA</p>
+    </div>
+    <div class="section right" [appCursorFollow]="follower">
+        <a class="option" [routerLink]="'/'" routerLinkActive="active-link">HOME</a>
+        <a class="option" [routerLink]="'/about'" routerLinkActive="active-link">ABOUT</a>
+        <a class="option" [routerLink]="'/projects'" routerLinkActive="active-link">PROJECTS</a>
+        <a class="option" [routerLink]="'/contact'" routerLinkActive="active-link">CONTACT</a>
+    </div>
+  </div>
+  
+  <div class="cursor-follow" #follower></div>
