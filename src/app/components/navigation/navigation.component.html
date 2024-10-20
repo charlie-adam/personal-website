@@ -1,14 +1,39 @@
 <div class="nav-wrapper" id="nav">
-    <div class="section left" [appCursorFollow]="follower2">
-      <p>CA</p>
+    <div class="section left" appCursorFollow>
+        <p>CA</p>
     </div>
-    <div class="section right" [appCursorFollow]="follower">
+    <div class="section right" appCursorFollow>
         <a class="option" [routerLink]="'/home'" routerLinkActive="active-link">HOME</a>
         <a class="option" [routerLink]="'/about'" routerLinkActive="active-link">ABOUT</a>
-        <a class="option" [routerLink]="'/projects'" routerLinkActive="active-link">PROJECTS</a>
+        <a class="option" [routerLink]="'/projects'" routerLinkActive="active-link" moreoptions>PROJECTS</a>
         <a class="option" [routerLink]="'/contact'" routerLinkActive="active-link">CONTACT</a>
     </div>
-  </div>
-  
-  <div class="cursor-follow" #follower></div>
-  <div class="cursor-follow small" #follower2></div>
+
+</div>
+
+<div class="section more-options" #moreOptions appCursorFollow>
+    <div class="option" routerLink="/projects" fragment="quotient">
+        <div class="icon">
+            <i class="bi bi-pen"></i>
+        </div>
+        <div class="info">
+            <p class="title">Quotient</p>
+            <p class="description">
+                Note management application that allows users to create, edit, and delete notes.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="option" routerLink="/projects" fragment="scanplr">
+        <div class="icon">
+            <i class="bi bi-music-note-list"></i>
+        </div>
+        <div class="info">
+            <p class="title">Scanplr</p>
+            <p class="description">
+                A web application allowing users to scan their playlists for samples and explore their music.
+
+            </p>
+        </div>
+    </div>
+</div>

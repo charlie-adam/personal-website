@@ -27,5 +27,27 @@ p, h1, h2, h3, h4, h5, h6{
     border-radius: 50%;
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
-    transition: opacity 0.5s ease;
+    
+    &.visible {
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+
+    &.hidden {
+        opacity: 0 !important;
+        transition: none;
+    }
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background: $lightblack;
+    margin: 0;
+    width: 80%
+}
+
+.hidden{
+    transition: all 0s ease;
+    opacity: 0 !important;
 }

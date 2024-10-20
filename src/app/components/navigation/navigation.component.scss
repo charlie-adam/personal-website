@@ -29,19 +29,22 @@
             }
         }
     }
-    .section {
-        display: flex;
-        flex-direction: row;
-        padding: 0px 10px;
-        align-items: center;
-        gap: 20px;
-        border-radius: 5px;
-        border: 1px solid $border;
-        justify-content: center;
-        z-index: 2;
-        backdrop-filter: blur(40px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
+
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 10px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 1px solid $border;
+    justify-content: center;
+    z-index: 2;
+    backdrop-filter: blur(40px);
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .active-link{
@@ -50,4 +53,74 @@
 
 .small{
     width: 20px;
+}
+
+.more-options-padder{
+    padding-top: 10px;
+}
+
+.more-options{
+    position:absolute;
+    opacity: 0;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+    padding: 10px 15px;
+    gap:10px;
+    align-items: center;
+    z-index: 10;
+    .option{
+        width: 100%;
+        display:flex;
+        flex-direction: row;
+        gap:10px;
+        align-items: center;
+        &:hover{
+            .icon{
+                i{
+                    color: $white;
+                }
+            }
+            .info{
+                .title{
+                    color: $white;
+                }
+                .description{
+                    color: $dimwhite;
+                }
+            }
+        }
+        .icon{
+            width: 40px !important;
+            height: 40px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $border;
+            color: $dimwhite;
+            border-radius: 5px;
+            i{
+                transition: color 0.5s ease;
+                font-size: 0.9rem;
+            }
+        }
+        .info{
+            display:flex;
+            flex-direction: column;
+            gap:3px;
+            max-width: 300px;
+            .title{
+                font-size: 0.85rem;
+                color: $dimwhite;
+                font-weight: 500;
+                transition: color 0.5s ease;
+
+            }
+            .description{
+                font-size: 0.75rem;
+                transition: color 0.5s ease;
+                color: $subtext;
+            }
+        }
+
+    }
 }
