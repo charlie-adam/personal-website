@@ -1,66 +1,111 @@
-@use './vars.scss' as *;
+@use "./vars.scss" as *;
 
-body{
-    background-color: $black;
-    font-family: 'DM Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: $white;
-    overflow-x: hidden;
-    height:100vh;
-    width:100%;
-    // background-image: url('/background.png');
-    // background-size: 30px;
-    // background-color: $black;
+body {
+  background-color: $black;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $white;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  // background-image: url('/background.png');
+  // background-size: 30px;
+  // background-color: $black;
 }
 
-p, h1, h2, h3, h4, h5, h6{
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
 }
 
 .cursor-follow {
-    position: absolute;
-    width: 50px;
-    height: 30px;
-    background-color: rgba(242, 242, 242, 0.22);
-    background: radial-gradient(circle, rgba(242, 242, 242, 0.4) 0%, rgba(242, 242, 242, 0.2) 70%);
-    pointer-events: none;
-    opacity: 0;
-    z-index: 0;
-    border-radius: 50%;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background-color: rgba(242, 242, 242, 0.22);
+  background: radial-gradient(
+    circle,
+    rgba(242, 242, 242, 0.4) 0%,
+    rgba(242, 242, 242, 0.2) 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
 }
 
-hr{
-    border: 0;
-    height: 1px;
-    background: $lightblack;
-    margin: 0;
-    width: 80%
+hr {
+  border: 0;
+  height: 1px;
+  background: $lightblack;
+  margin: 0;
+  width: 80%;
 }
 
-.hidden{
-    opacity: 0 !important;
+.hidden {
+  opacity: 0 !important;
 }
 
-.tooltip{
-    position: fixed;
-    background-color: $black;
-    z-index: 1000;
-    color: $dimwhite;
-    padding: 5px;
-    opacity: 0;
-    padding: 5px 8px;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    border: 1px solid $border;
-    transition: opacity 0.3s ease;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.tooltip {
+  position: fixed;
+  background-color: $black;
+  z-index: 1000;
+  color: $dimwhite;
+  padding: 5px;
+  opacity: 0;
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid $border;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.obfuscated-text {
+  font-family: "DM Sans", monospace;
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.letter {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.morph {
+  animation: morph 0.3s ease;
+}
+
+@keyframes morph {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+    filter: blur(0.2px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+    opacity: 1;
+  }
 }

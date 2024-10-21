@@ -11,11 +11,12 @@ import { CursorFollowDirective } from '../../directives/cursor-follow.directive'
 import { NavigationEnd, Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TooltipDirective } from '../../directives/tooltip.directive';
+import { ObfuscateDirective } from '../../directives/obfuscate.directive';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [CursorFollowDirective, RouterModule, CommonModule, TooltipDirective],
+  imports: [CursorFollowDirective, RouterModule, CommonModule, TooltipDirective, ObfuscateDirective],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
