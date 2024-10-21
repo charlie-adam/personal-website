@@ -5,9 +5,10 @@ import {
   AfterViewInit,
   HostListener,
   Renderer2,
+  Host,
 } from '@angular/core';
 import { CursorFollowDirective } from '../../directives/cursor-follow.directive';
-import { Router, RouterLinkActive, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TooltipDirective } from '../../directives/tooltip.directive';
 
@@ -22,6 +23,7 @@ export class NavigationComponent implements AfterViewInit {
   @ViewChild('moreOptions') moreOptions!: ElementRef;
   discord: string = 'damn7337';
   gmail: string = 'cabusiness@gmail.com';
+  @ViewChild('selectionFollow') selectionFollow!: ElementRef; 
   moreOptionsTarget: any;
   dropdownVisible: boolean = false;
   ngAfterViewInit() {
@@ -31,9 +33,36 @@ export class NavigationComponent implements AfterViewInit {
     if (follower) {
       follower.style.display = 'none';
     }
+    setTimeout(() => {
+      this.updateSelectionFollowLocation();
+    }, 100);
   }
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private rtr: Router) {
+    this.rtr.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        setTimeout(() => {
+          this.updateSelectionFollowLocation();
+        },200);
+      }
+    });
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(e: Event) {
+    this.updateSelectionFollowLocation();
+  }
+
+  updateSelectionFollowLocation(){
+    const target = document.querySelector('.active-link') as HTMLElement;
+    if (target && target.classList.contains('option')) {
+      const rect = target.getBoundingClientRect();
+      this.selectionFollow.nativeElement.style.left = `${rect.left + rect.width/2}px`;
+      this.selectionFollow.nativeElement.style.top = `30px`;
+      this.selectionFollow.nativeElement.style.width = `${rect.width}px`;
+      this.selectionFollow.nativeElement.style.opacity = '1';
+    }
+  }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {

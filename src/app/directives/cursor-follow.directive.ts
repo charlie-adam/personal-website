@@ -49,7 +49,7 @@ export class CursorFollowDirective implements OnDestroy {
     this.renderer.setStyle(
       this.followerElement,
       'height',
-      `${followerSize * 0.7}px`
+      `${followerSize * 0.6}px`
     );
   }
 
