@@ -10,11 +10,15 @@ body{
     overflow-x: hidden;
     height:100vh;
     width:100%;
+    // background-image: url('/background.png');
+    // background-size: 30px;
+    // background-color: $black;
 }
 
 p, h1, h2, h3, h4, h5, h6{
     margin: 0;
     padding: 0;
+    font-weight: 400;
 }
 
 .cursor-follow {
@@ -22,8 +26,10 @@ p, h1, h2, h3, h4, h5, h6{
     width: 50px;
     height: 30px;
     background-color: rgba(242, 242, 242, 0.22);
+    background: radial-gradient(circle, rgba(242, 242, 242, 0.4) 0%, rgba(242, 242, 242, 0.2) 70%);
     pointer-events: none;
     opacity: 0;
+    z-index: 0;
     border-radius: 50%;
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
@@ -43,7 +49,7 @@ hr{
 }
 
 .tooltip{
-    position: absolute;
+    position: fixed;
     background-color: $black;
     z-index: 1000;
     color: $dimwhite;

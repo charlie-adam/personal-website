@@ -13,7 +13,7 @@ import {
 })
 export class CursorFollowDirective implements OnDestroy {
   private followerElement!: HTMLElement;
-  @Input() size = 50;
+  @Input('appCursorFollow') type: string = 'absolute';
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -25,13 +25,13 @@ export class CursorFollowDirective implements OnDestroy {
     this.el.nativeElement.setAttribute('follower-id', id);
     this.followerElement = this.renderer.createElement('div');
     this.renderer.addClass(this.followerElement, 'cursor-follow');
-    this.renderer.setStyle(this.followerElement, 'position', 'absolute');
+    this.renderer.setStyle(this.followerElement, 'position', this.type);
     this.renderer.setStyle(this.followerElement, 'opacity', '0');
-    this.renderer.setStyle(this.followerElement, 'width', `${this.size}px`);
+    this.renderer.setStyle(this.followerElement, 'width', `50px`);
     this.renderer.setStyle(
       this.followerElement,
       'height',
-      `${this.size * 0.7}px`
+      `${50 * 0.7}px`
     );
 
     this.followerElement.setAttribute('id', id);
@@ -44,7 +44,7 @@ export class CursorFollowDirective implements OnDestroy {
     const parentRect = this.el.nativeElement.getBoundingClientRect();
     const parentWidth = parentRect.width;
 
-    const followerSize = parentWidth < 50 ? parentWidth * 0.5 : this.size;
+    const followerSize = parentWidth < 50 ? parentWidth * 0.5 : 50;
     this.renderer.setStyle(this.followerElement, 'width', `${followerSize}px`);
     this.renderer.setStyle(
       this.followerElement,

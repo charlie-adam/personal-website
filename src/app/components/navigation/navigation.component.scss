@@ -1,10 +1,13 @@
 @use '../../../vars.scss' as *;
 
 .nav-wrapper{
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin:10px;
+    z-index: 100;
+    position: fixed;
     .left{
         height: 36px;
         p{
@@ -61,7 +64,7 @@
 
 .more-options{
     pointer-events: none;
-    position:absolute;
+    position:fixed;
     opacity: 0;
     flex-direction: column;
     transition: opacity 0.3s ease;
@@ -145,4 +148,8 @@
             color: $white;
         }
     }
+}
+
+.selection-follow{
+    position:fixed;
 }
