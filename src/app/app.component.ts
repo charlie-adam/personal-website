@@ -2,6 +2,7 @@ import { Component, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from "./components/navigation/navigation.component";
 import { FooterComponent } from './components/footer/footer.component';
+import { SocketService } from './services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,48 @@ import { FooterComponent } from './components/footer/footer.component';
 export class AppComponent implements AfterViewInit {
   title = 'personal-website';
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef, private socketService: SocketService) {}
 
   ngAfterViewInit(): void {
     this.obfuscateText('obfuscate-text');
+  }
+
+  ngOnInit() {
+    document.addEventListener('mousemove', (event: MouseEvent) => {
+      const position = { x: event.clientX, y: event.clientY };
+      this.socketService.sendCursorPosition(position);
+    });
+
+    this.socketService.onCursorUpdate().subscribe((data: any) => {
+      this.updateCursorPosition(data);
+    });
+
+    this.socketService.onInitialCursors().subscribe((cursorPositions: any) => {
+      for (const userId in cursorPositions) {
+        this.updateCursorPosition({ ...cursorPositions[userId], userId });
+      }
+    });
+
+    this.socketService.onRemoveCursor().subscribe((userId: string) => {
+      const cursorElement = document.getElementById(`cursor-${userId}`);
+      if (cursorElement) {
+        cursorElement.remove();
+      }
+    });
+  }
+
+  updateCursorPosition(position: { x: number; y: number; userId: string }) {
+    let cursorElement = document.getElementById(`cursor-${position.userId}`);
+
+    if (!cursorElement) {
+      cursorElement = this.renderer.createElement('div');
+      this.renderer.setAttribute(cursorElement, 'id', `cursor-${position.userId}`);
+      this.renderer.addClass(cursorElement, 'cursor');
+      document.body.appendChild(cursorElement!);
+    }
+
+    this.renderer.setStyle(cursorElement, 'left', `${position.x}px`);
+    this.renderer.setStyle(cursorElement, 'top', `${position.y}px`);
   }
 
   obfuscateText(elementId: string): void {

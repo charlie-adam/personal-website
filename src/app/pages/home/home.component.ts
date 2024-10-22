@@ -188,7 +188,25 @@ export class HomeComponent {
     return [col, row];
   }
 
-  setupScrollAnimations() {}
+  setupScrollAnimations() {
+    const hexagons = this.hexagonColumns.flat();
+    hexagons.forEach(hexagon => {
+      const hex = document.getElementById(hexagon.id!);
+      if (!hex) {
+        return;
+      }
+      gsap.from(hex, {
+        scrollTrigger: {
+          trigger: hex,
+          start: 'top 80%',
+        },
+        delay: Math.random() * 0.8,
+        scale: 0,
+        duration: 0.5,
+        ease: 'back.out(1.7)',
+      });
+    });
+  }
 
   ngOnInit() {}
 
