@@ -96,7 +96,7 @@ export class HomeComponent {
     {
       id: 'Scanpler',
       icon: 'bi-music-note-list',
-      items: ['typescript', 'angular', 'javascript', 'html', 'css', 'node', 'python'],
+      items: ['typescript', 'angular', 'html', 'css', 'node', 'python'],
       location: '9-2',
     },
     {
