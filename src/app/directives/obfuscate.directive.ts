@@ -7,8 +7,8 @@ import { Directive, AfterViewInit, Renderer2, ElementRef, Input } from '@angular
 export class ObfuscateDirective implements AfterViewInit {
   @Input() obfuscationSpeed = 80;
   constructor(private renderer: Renderer2, private el: ElementRef) {}
-
-  ngAfterViewInit(): void {
+  @Input('appObfuscate') time?: number = -1;
+    ngAfterViewInit(): void {
     this.obfuscateText();
   }
 
@@ -36,8 +36,23 @@ export class ObfuscateDirective implements AfterViewInit {
       }, this.obfuscationSpeed);
     };
 
+    const stopObfuscation = (): void => {
+      clearInterval(obfuscationInterval);
+      element.textContent = originalText;
+    }
+
     this.initLetters(element, originalText);
     startObfuscation();
+    if (this.time !== -1) {
+      console.log(this.time);
+      setTimeout(() => {
+        element.classList.add('morph');
+        setTimeout(() => {
+          element.classList.remove('morph');
+        }, 700);
+        stopObfuscation();
+      }, this.time!*1000);
+    }
   }
 
   updateLetter(element: HTMLElement, index: number, newChar: string): void {

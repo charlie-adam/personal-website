@@ -1,16 +1,16 @@
 <div class="home-wrapper">
     <div class="feature">
-        <p class="title">Hi, I'm <span class="red">Charlie</span></p>
+        <p class="title">Hi, I'm <span class="red" [appObfuscate]="1">Charlie</span></p>
         <p class="info">
-            I'm a software engineer based in Australia with <span class="red">2 years</span> of industry experience at
-            age <span class="red">18</span>.
+            I'm a software engineer based in Australia with <span class="red" [appObfuscate]="1">2 years</span> of industry experience at
+            age <span class="red" [appObfuscate]="1">18</span>.
         </p>
         <p class="info">
-            I have a passion for <span class="red">web development</span> and design but have experience in a variety of
-            <span class="red">languages</span> and <span class="red">frameworks</span>.
+            I have a passion for <span class="red" [appObfuscate]="1">web development</span> and design but have experience in a variety of
+            <span class="red" [appObfuscate]="1">languages</span> and <span class="red" [appObfuscate]="1">frameworks</span>.
         </p>
         <p class="info">
-            I am currently studying <span class="red">Business / Computer Science</span> at a Brisbane based university.
+            I am currently studying <span class="red" [appObfuscate]="1">Business / Computer Science</span> at a Brisbane based university.
         </p>
     </div>
     <div class="hexagons-area" #hexagonsArea>
@@ -23,7 +23,7 @@
                     <p class="hexagon-title" *ngIf="hexagon.title && !(hexagon.title == 'Tool')">
                         {{ hexagon.title }}
                     </p>    
-                    <p class="hexagon-title" *ngIf="hexagon.title && (hexagon.title == 'Tool')" appObfuscate>
+                    <p class="hexagon-title" *ngIf="hexagon.title && (hexagon.title == 'Tool')" [appObfuscate]>
                         {{ hexagon.title }}
                     </p>
                 </div>
