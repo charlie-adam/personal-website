@@ -43,6 +43,7 @@ export class HomeComponent {
       const hexagons: Hexagon[] = [];
       for (let j = 1; j <= i; j++) {
         hexagons.push({
+          id: `${i}-${j}`,
           style: this.getHexagonStyle(j, i)
         });
       }
@@ -53,6 +54,7 @@ export class HomeComponent {
       const hexagons: Hexagon[] = [];
       for (let j = 1; j <= i; j++) {
         hexagons.push({
+          id: `${i}-${j}`,
           style: this.getHexagonStyle(j, i)
         });
       }
@@ -78,6 +80,7 @@ export class HomeComponent {
 }
 
 interface Hexagon {
+  id?: string;
   image?: string;
   title?: string;
   style?: string;

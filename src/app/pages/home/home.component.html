@@ -14,7 +14,7 @@
     <div class="hexagons-area" #hexagonsArea>
         <div class="hexagon-column" *ngFor="let hexagonColumn of hexagonColumns">
             <div class="hexagon" *ngFor="let hexagon of hexagonColumn">
-                <div class="hexagon-border" [style]="hexagon.style">
+                <div class="hexagon-border" [id]="hexagon.id" [style]="hexagon.style">
                     <div class="hexagon">
                         <img [src]="hexagon.image" alt="hexagon.image" *ngIf="hexagon.image">
                         <p class="hexagon-title" *ngIf="hexagon.title">{{ hexagon.title }}</p>
