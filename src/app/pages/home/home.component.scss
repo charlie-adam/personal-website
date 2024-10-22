@@ -1,4 +1,100 @@
+@use '../../../vars.scss' as *;
+
 .home-wrapper{
     display:flex;
     flex-direction: column;
+    width:100%;
+    position:relative;
+    height:calc(100vh);
+}
+
+.feature{
+    max-width: 50vw;
+    width: max-content;
+    position: absolute;
+    bottom: 5vw;
+    left: 5vw;
+    z-index:11;
+    .title{
+        font-size: 3rem;
+    }
+    .info{
+        margin: 5px 0;
+        font-size: 1.2rem;
+        color: $dimwhite;
+    }
+}
+
+span{
+    padding:2px 3px;
+    transition: all 0.3s ease;
+    &:hover{
+        color: $dimwhite;
+        background-color: $red;
+    }
+}
+
+.title{
+    span{
+        &:hover{
+            color: $white;
+            background-color: $red;
+        }
+    }
+}
+
+p{
+    user-select: none;
+}
+
+.hexagons-area{
+    z-index:10;
+    width:70%;
+    height:100%;
+    align-self:flex-end;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .hexagon-column{
+        margin:0 -12px;
+        display:flex;
+        flex-direction: column;
+    }
+}
+
+.hexagon-border{
+    width: 140px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    background-color: $border;
+    &:hover{
+        background-color: $red;
+        .hexagon{
+            img{
+                filter: grayscale(0%);
+            }
+        }
+    }
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    .hexagon{
+        width: 136px;
+        height: 136px;
+        background-color: rgba($lightblack, 0.8);
+        backdrop-filter:40px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 50%;
+            height: 50%;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+        -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+        clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    }
 }

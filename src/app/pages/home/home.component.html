@@ -1,10 +1,26 @@
-<div class="content home-wrapper">
-    <h1>Hi</h1>
-    <!-- <div class="panel">
-        <p>
-            I currently work as a Software Engineer at Dappers Software. 
-            <br>
-            I have a passion for web development and I am always looking for new challenges.
+<div class="home-wrapper">
+    <div class="feature">
+        <p class="title">Hi, I'm <span class="red">Charlie</span></p>
+        <p class="info">
+            I'm a software engineer based in Australia with <span class="red">2 years</span> of industry experience at age <span class="red">18</span>. 
         </p>
-    </div> -->
+        <p class="info">
+            I have a passion for <span class="red">web development</span> and design but have experience in a variety of <span class="red">languages</span> and <span class="red">frameworks</span>.
+        </p>
+        <p class="info">
+            I am currently studying <span class="red">Business / Computer Science</span> at a Brisbane based university.
+        </p>
+    </div>
+    <div class="hexagons-area" #hexagonsArea>
+        <div class="hexagon-column" *ngFor="let hexagonColumn of hexagonColumns">
+            <div class="hexagon" *ngFor="let hexagon of hexagonColumn">
+                <div class="hexagon-border" [style]="hexagon.style">
+                    <div class="hexagon">
+                        <img [src]="hexagon.image" alt="hexagon.image" *ngIf="hexagon.image">
+                        <p class="hexagon-title" *ngIf="hexagon.title">{{ hexagon.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

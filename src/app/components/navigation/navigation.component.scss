@@ -35,6 +35,10 @@
 
 }
 
+.option{
+    cursor:pointer !important;
+}
+
 .section {
     display: flex;
     flex-direction: row;
@@ -71,7 +75,7 @@
     padding: 10px 15px;
     gap:10px;
     align-items: center;
-    z-index: 10;
+    z-index:15;
     -webkit-user-select: none;
     user-select: none;
     .option{
@@ -152,4 +156,6 @@
 
 .selection-follow{
     position:fixed;
+    transition:all 0.3s ease;
+    // background-color: $red;
 }
