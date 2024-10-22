@@ -68,14 +68,15 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, scale 0.1s ease;
     background-color: $border;
     &:hover{
         background-color: $red;
         scale: 1.02;
         .hexagon{
-            img{
+            img, i, p{
                 filter: grayscale(0%);
+                opacity: 1;
             }
         }
     }
@@ -89,13 +90,37 @@ p{
         display:flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 5px;
         img{
-            width: 50%;
-            height: 50%;
+            width: 55%;
+        }
+        i{
+            font-size: 2.5rem;
+            color: $white;
+        }
+        p{
+            font-size: 0.9rem;
+            color: $dimwhite;
+            user-select: none;
+        }
+        img, i, p{
             transition: all 0.3s ease;
             filter: grayscale(100%);
+            opacity: 0.1;
         }
         -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
         clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
     }
+}
+
+.project-child{
+    background-color: rgba($blue,0.5);
+    .hexagon{
+        img, i, p{
+            filter: grayscale(70%);
+            opacity: 0.4;
+        }
+    }
+
 }

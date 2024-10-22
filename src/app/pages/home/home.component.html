@@ -2,10 +2,12 @@
     <div class="feature">
         <p class="title">Hi, I'm <span class="red">Charlie</span></p>
         <p class="info">
-            I'm a software engineer based in Australia with <span class="red">2 years</span> of industry experience at age <span class="red">18</span>. 
+            I'm a software engineer based in Australia with <span class="red">2 years</span> of industry experience at
+            age <span class="red">18</span>.
         </p>
         <p class="info">
-            I have a passion for <span class="red">web development</span> and design but have experience in a variety of <span class="red">languages</span> and <span class="red">frameworks</span>.
+            I have a passion for <span class="red">web development</span> and design but have experience in a variety of
+            <span class="red">languages</span> and <span class="red">frameworks</span>.
         </p>
         <p class="info">
             I am currently studying <span class="red">Business / Computer Science</span> at a Brisbane based university.
@@ -13,12 +15,17 @@
     </div>
     <div class="hexagons-area" #hexagonsArea>
         <div class="hexagon-column" *ngFor="let hexagonColumn of hexagonColumns">
-            <div class="hexagon" *ngFor="let hexagon of hexagonColumn">
-                <div class="hexagon-border" [id]="hexagon.id" [style]="hexagon.style">
-                    <div class="hexagon">
-                        <img [src]="hexagon.image" alt="hexagon.image" *ngIf="hexagon.image">
-                        <p class="hexagon-title" *ngIf="hexagon.title">{{ hexagon.title }}</p>
-                    </div>
+            <div class="hexagon-border" *ngFor="let hexagon of hexagonColumn" [class]="hexagon.class"
+                [style]="hexagon.style">
+                <div class="hexagon" (mouseenter)="checkHex($event)" (mouseleave)="clearProjects()" [id]="hexagon.id">
+                    <img [src]="hexagon.image" alt="hexagon.image" *ngIf="hexagon.image">
+                    <i *ngIf="hexagon.bIcon" [class]="hexagon.bIcon"></i>
+                    <p class="hexagon-title" *ngIf="hexagon.title && !(hexagon.title == 'Tool')">
+                        {{ hexagon.title }}
+                    </p>    
+                    <p class="hexagon-title" *ngIf="hexagon.title && (hexagon.title == 'Tool')" appObfuscate>
+                        {{ hexagon.title }}
+                    </p>
                 </div>
             </div>
         </div>
