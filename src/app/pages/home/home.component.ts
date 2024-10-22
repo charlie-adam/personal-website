@@ -16,6 +16,7 @@ export class HomeComponent {
   @ViewChild('feature') feature!: ElementRef;
   hexagonColumns: Hexagon[][] = [];
   @ViewChild('hexagonsArea') hexagonsArea!: ElementRef;
+  touched: boolean = false;
   constructor() {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -27,6 +28,14 @@ export class HomeComponent {
       this.setupScrollAnimations();
       this.setSkills();
     }, 10);
+
+    setTimeout(() => {
+      if (!this.touched) {
+        const target = document.getElementById('5-2')?.parentElement as HTMLElement;
+        target.classList.add('selected-project');
+        this.showProject(this.projects[0]);
+      }
+    }, 2000);
   }
 
   checkHex(e: MouseEvent) {
@@ -37,6 +46,7 @@ export class HomeComponent {
       const target = e.target as HTMLElement;
       this.projects.forEach(project => {
         if (target.id === project.location) {
+          target.classList.add('selected-project');
           this.showProject(project);
         }
       });
@@ -44,6 +54,7 @@ export class HomeComponent {
   }
 
   showProject(project: Project) {
+    this.touched = true;
     const hexagons = this.hexagonColumns.flat();
     
     const projectSkills = project.items;
@@ -52,15 +63,22 @@ export class HomeComponent {
     
     const projectSkillsHexagons = hexagons.filter(hexagon => projectSkillImages.includes(hexagon.image!));
 
-    projectSkillsHexagons.forEach(hexagon => {
-      hexagon.class = 'hexagon-border project-child';
+    projectSkillsHexagons.forEach((hexagon, index) => {
+      setTimeout(() => {
+        hexagon.class = 'hexagon-border project-child';
+      }, index * 100);  // Stagger by 100ms for each hexagon
     });
   }
 
   clearProjects() {
+    const selectedProjects = document.querySelectorAll('.selected-project');  
+    selectedProjects.forEach(project => {
+      project.classList.remove('selected-project');
+    });
     const hexagons = this.hexagonColumns.flat();
     hexagons.forEach(hexagon => {
       hexagon.class = 'hexagon-border';
+      hexagon.style = hexagon.style!.replace('scale: 1;', '');
     });
   }
 
@@ -78,7 +96,7 @@ export class HomeComponent {
     {
       id: 'Scanpler',
       icon: 'bi-music-note-list',
-      items: ['angular', 'javascript', 'typescript', 'html', 'css', 'node', 'python'],
+      items: ['typescript', 'angular', 'javascript', 'html', 'css', 'node', 'python'],
       location: '9-2',
     },
     {

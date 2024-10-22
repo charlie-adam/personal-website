@@ -17,7 +17,7 @@
         <div class="hexagon-column" *ngFor="let hexagonColumn of hexagonColumns">
             <div class="hexagon-border" *ngFor="let hexagon of hexagonColumn" [class]="hexagon.class"
                 [style]="hexagon.style">
-                <div class="hexagon" (mouseenter)="checkHex($event)" (mouseleave)="clearProjects()" [id]="hexagon.id">
+                <div class="hexagon" [class.project-hex]="hexagon.bIcon" (mouseenter)="checkHex($event)" (mouseleave)="clearProjects()" [id]="hexagon.id">
                     <img [src]="hexagon.image" alt="hexagon.image" *ngIf="hexagon.image">
                     <i *ngIf="hexagon.bIcon" [class]="hexagon.bIcon"></i>
                     <p class="hexagon-title" *ngIf="hexagon.title && !(hexagon.title == 'Tool')">

@@ -25,7 +25,6 @@
             will-change: transform;
             text-decoration: none;
             font-size: 0.8rem;
-            cursor: default;
             user-select: none;
             &:hover{
                 color: $white;
@@ -146,6 +145,7 @@
 
 .links{
     i{
+        cursor: pointer;
         color: $dimwhite;
         transition: color 0.3s ease;
         &:hover{
