@@ -117,7 +117,8 @@ hr {
   padding: 30px;
   border-radius: 5px;
   border: 1px solid $border;
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(20px);
+  background-color: rgba($lightblack, 0.5);
   user-select: none;
   -webkit-user-select: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 0 5px rgba(242, 242, 242, 0.01);

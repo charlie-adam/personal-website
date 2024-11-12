@@ -20,6 +20,10 @@ export class AppComponent implements AfterViewInit {
     this.obfuscateText('obfuscate-text');
   }
 
+  scrollTop() {
+    window.scroll(0,0);
+  }
+
   ngOnInit() {
     document.addEventListener('mousemove', (event: MouseEvent) => {
       const position = { x: event.clientX, y: event.clientY };

@@ -10,10 +10,15 @@
     position: fixed;
     .left{
         height: 36px;
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         p{
             user-select: none;
             cursor: default;
             font-size: 1.2rem;
+            margin-top: 2px;
         }
     }
     .right{
@@ -48,7 +53,8 @@
     border: 1px solid $border;
     justify-content: center;
     z-index: 2;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(20px);
+    background-color: rgba($lightblack, 0.5);
     user-select: none;
     -webkit-user-select: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 0 5px rgba(242, 242, 242, 0.01);}
@@ -156,5 +162,5 @@
 
 .selection-follow{
     position:fixed;
-    transition:all 0.15s ease;
+    transition: all 0.15s ease;
 }

@@ -44,7 +44,6 @@ export class ObfuscateDirective implements AfterViewInit {
     this.initLetters(element, originalText);
     startObfuscation();
     if (this.time !== -1) {
-      console.log(this.time);
       setTimeout(() => {
         element.classList.add('morph');
         setTimeout(() => {

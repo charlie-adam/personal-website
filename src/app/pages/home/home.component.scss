@@ -72,7 +72,7 @@ p {
   background-color: $border;
   &:hover {
     background-color: $red;
-    scale: 1.02;
+    scale: 1.03;
     .hexagon {
       img,
       i,
@@ -174,4 +174,8 @@ p {
 
 .project-hex{
     cursor:pointer;
+}
+
+img{
+    user-select: none;
 }

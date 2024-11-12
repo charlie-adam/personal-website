@@ -35,7 +35,7 @@ export class HomeComponent {
         target.classList.add('selected-project');
         this.showProject(this.projects[0]);
       }
-    }, 2000);
+    }, 4000);
   }
 
   checkHex(e: MouseEvent) {
@@ -64,9 +64,10 @@ export class HomeComponent {
     const projectSkillsHexagons = hexagons.filter(hexagon => projectSkillImages.includes(hexagon.image!));
 
     projectSkillsHexagons.forEach((hexagon, index) => {
-      setTimeout(() => {
-        hexagon.class = 'hexagon-border project-child';
-      }, index * 100);  // Stagger by 100ms for each hexagon
+      hexagon.class = 'hexagon-border project-child';
+      // setTimeout(() => {
+      //   // hexagon.class = 'hexagon-border project-child';
+      // }, index * 100);  // Stagger by 100ms for each hexagon
     });
   }
 

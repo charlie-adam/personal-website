@@ -53,12 +53,6 @@ export class CursorFollowDirective implements OnDestroy {
     );
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(e: Event) {
-    this.setFollowerSize();
-  }
-
-  @HostListener('document:mousemove', ['$event'])
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
     const isParentHidden =
@@ -68,7 +62,6 @@ export class CursorFollowDirective implements OnDestroy {
       this.renderer.setStyle(this.followerElement, 'opacity', '0');
       return;
     }
-    const parentStyle = window.getComputedStyle(this.el.nativeElement);
     const rect = this.el.nativeElement.getBoundingClientRect();
     const followerRect = this.followerElement.getBoundingClientRect();
     const followerWidth = followerRect.width;

@@ -1,0 +1,82 @@
+@use "../../../vars.scss" as *;
+.timeline-wrapper{
+    position:absolute;
+    top:0vh;
+    left:12vw;
+    width:50px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .item{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgba($white, 0.1);
+        backdrop-filter: blur(35px);
+        margin-bottom: -4px;
+        margin-top: -4px;
+        z-index: 4;
+        transition: all 0.5s ease;
+        -webkit-clip-path: polygon(
+            25% 5%,
+            75% 5%,
+            100% 50%,
+            75% 95%,
+            25% 95%,
+            0% 50%
+        );
+        clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    }
+    .padder{
+        z-index: 3;
+        width:2px;
+        background-color: rgba($white, 0.1);
+        backdrop-filter: blur(35px);
+        // border-right: 1px solid $white;
+        // border-left: 1px solid $white;
+        height:400px;
+    }
+}
+
+.status{
+    transition: height 0.1s ease;
+    position:fixed;
+    left: calc(12vw + 24px);
+    top: 50vh;
+    width: 2px;
+    background-color: $white;
+}
+.centerscreen{
+    position: fixed;
+    top: 50vh;
+    width:10px;
+    height:1px;
+    opacity: 0;
+}
+
+.focused{
+    background-color: $white !important;
+}
+
+.content-wrapper{
+    position: absolute;
+    top: 0vh;
+    left: 20vw;
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .timeline-item{
+        width:100%;
+        min-width: 200px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        opacity:0;
+        scale:0.5;
+    }
+}

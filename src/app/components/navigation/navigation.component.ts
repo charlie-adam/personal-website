@@ -57,11 +57,13 @@ export class NavigationComponent implements AfterViewInit {
   updateSelectionFollowLocation(){
     const target = document.querySelector('.active-link') as HTMLElement;
     if (target && target.classList.contains('option')) {
+      this.selectionFollow.nativeElement.style.transition = 'none';
       const rect = target.getBoundingClientRect();
       this.selectionFollow.nativeElement.style.left = `${rect.left + rect.width/2}px`;
       this.selectionFollow.nativeElement.style.top = `30px`;
       this.selectionFollow.nativeElement.style.width = `${rect.width}px`;
       this.selectionFollow.nativeElement.style.opacity = '1';
+      this.selectionFollow.nativeElement.style.transition = 'all 0.15s ease';
     }
   }
 
